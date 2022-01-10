@@ -41,8 +41,24 @@ export class Tab3Page {
     }
   }
 
-  signout() {
-    this.authService.logout();
-  }
+  async signout() {
+      const alert = await this.alertController.create({
+        header: 'Please stay!',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+          }, {
+            text: 'Ok',
+            role: 'ok',
+          }
+        ]
+      });
 
+    await alert.present();
+    const response = await alert.onDidDismiss();
+    if(response.role === 'ok') {
+    this.authService.logout();
+    }
+  }
 }

@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="spacer"></div>
+  <div class="container">
+      <ion-img [src]="logo" id="logo" class="center"></ion-img>
+      <br>
+      <ion-item class="center">
+        <ion-label>Username</ion-label>
+        <ion-input type="text" placeholder="Username"></ion-input>
+      </ion-item>
+      <ion-item class="center">
+        <ion-label>Password</ion-label>
+        <ion-input type="text" placeholder="Password"></ion-input>
+      </ion-item>
+      <a href="/resetpassword" class="center">Forgot password?</a>
+      <br>
+      <ion-button (click)="navigateTo('tabs')" class="center">Login</ion-button>
+  </div>
+</ion-content>

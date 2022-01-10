@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Shoppinglist
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="false">
+  <ion-list padding>
+  	<ion-item *ngFor="let article of articles">
+      <ion-img [src]="article.img" id="logo" class="image"></ion-img>
+      <h5>{{article.title}}</h5>
+    </ion-item>
+  </ion-list>
+</ion-content>

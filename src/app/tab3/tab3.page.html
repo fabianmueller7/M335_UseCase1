@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Einstellungen
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h3>Einstellungen</h3>
+  <ion-item>
+    <ion-label>Change username</ion-label>
+    <ion-button color="primary" expand="full" (click)="getNickname('username')">change password</ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-label>Change email</ion-label>
+    <ion-button color="primary" expand="full" (click)="getNickname('email')">change password</ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-label>Change password</ion-label>
+    <ion-button color="primary" expand="full" (click)="getNickname('password')">change password</ion-button>
+  </ion-item>
+
+
+</ion-content>

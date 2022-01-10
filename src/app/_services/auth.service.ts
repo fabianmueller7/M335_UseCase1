@@ -37,6 +37,16 @@ export class AuthService {
       window.alert(error.message);
     });
   }
+
+  resetpassword(email: string){
+    this.afAuth.sendPasswordResetEmail(email)
+    .then((result) => {
+      this.router.navigate(['/login']);
+      console.log('email send');
+    }).catch((error) => {
+      window.alert(error.message);
+    });
+  }
 }
 
 export interface User {

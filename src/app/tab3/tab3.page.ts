@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-tab3',
@@ -8,7 +9,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab3Page {
 
-  constructor(public alertController: AlertController) {}
+  constructor(public alertController: AlertController, private authService: AuthService) {}
 
   async getNickname(text: string) {
     const alert = await this.alertController.create({
@@ -38,6 +39,10 @@ export class Tab3Page {
     if(response.role === 'ok') {
        console.log(text + ' changed to ' + response.data.values.name);
     }
+  }
+
+  signout() {
+    this.authService.logout();
   }
 
 }

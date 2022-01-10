@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService, User } from '../_services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +11,23 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
 
   logo = './../../assets/logo.png';
+  loginForm: FormGroup;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
+    this.loginForm = new FormGroup({
+      email: new FormControl('',  Validators.email),
+      password: new FormControl('',)
+    });
   }
 
-  navigateTo(link: string) {
-    this.router.navigate(['/tabs']);
+  sendContactForm() {
+    const user: User = {
+      email: this.loginForm.get('email').value,
+      password: this.loginForm.get('password').value
+    };
+    this.authService.loginWithEmailAndPassword(user);
   }
 
 }

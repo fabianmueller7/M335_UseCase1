@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login"></ion-back-button>
+    </ion-buttons>
+    <ion-img [src]="logo" id="logo" class="center"></ion-img>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3>Create Account</h3>
+  <form [formGroup]="registerForm" (ngSubmit)="sendContactForm()">
+    <ion-item class="center">
+      <ion-label position="floating">Email <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input formControlName="email" type="email" required="true"></ion-input>
+    </ion-item>
+    <ion-item class="center">
+      <ion-label position="floating">Password<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input formControlName="password" type="password" required="true"></ion-input>
+    </ion-item>
+    <div class="formErrors">
+      <ion-item color="danger" *ngIf="!registerForm.controls.email.valid && !registerForm.controls.email.pending && (registerForm.controls.email.dirty)">
+        Please enter a valid email!
+      </ion-item>
+    </div>
+    <ion-button block color="primary" type="submit" [disabled]="registerForm.invalid">
+      Create Account
+    </ion-button>
+  </form>
+</ion-content>

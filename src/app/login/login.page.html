@@ -6,16 +6,29 @@
   <div class="container">
       <ion-img [src]="logo" id="logo" class="center"></ion-img>
       <br>
-      <ion-item class="center">
-        <ion-label>Username</ion-label>
-        <ion-input type="text" placeholder="Username"></ion-input>
-      </ion-item>
-      <ion-item class="center">
-        <ion-label>Password</ion-label>
-        <ion-input type="text" placeholder="Password"></ion-input>
-      </ion-item>
+
+
+      <form [formGroup]="loginForm" (ngSubmit)="sendContactForm()">
+        <ion-item class="center">
+          <ion-label position="floating">Email <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="email" type="email" required="true"></ion-input>
+        </ion-item>
+        <ion-item class="center">
+          <ion-label position="floating">Password<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input formControlName="password" type="password" required="true"></ion-input>
+        </ion-item>
+        <div class="formErrors">
+          <ion-item color="danger" *ngIf="!loginForm.controls.email.valid && !loginForm.controls.email.pending && (loginForm.controls.email.dirty)">
+            Sorry, that email is not correct!
+          </ion-item>
+        </div>
+        <ion-button block color="primary" type="submit" [disabled]="loginForm.invalid" class="center">
+          Login
+        </ion-button>
+      </form>
+
+
       <a href="/resetpassword" class="center">Forgot password?</a>
-      <br>
-      <ion-button (click)="navigateTo('tabs')" class="center">Login</ion-button>
+      <a href="/register" class="center">Create a Account</a>
   </div>
 </ion-content>
